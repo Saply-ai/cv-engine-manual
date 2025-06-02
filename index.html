@@ -1,64 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CV Engine - User Manual</title>
+  <style>
+    body { font-family: "Segoe UI", Arial, sans-serif; color: #222; background: #f8f9fa; margin: 0; padding: 2rem; }
+    h1 { font-size: 2.2rem; color: #334e68; }
+    h2 { color: #386641; margin-top: 2rem; }
+    h3 { color: #22577a; margin-top: 1.5rem; }
+    ul, ol { margin-bottom: 1rem; }
+    code, pre { background: #eef3f7; color: #111; border-radius: 4px; padding: 0.2em 0.5em; }
+    .note { background: #e9f5db; padding: 0.7rem; border-left: 4px solid #70af85; margin-bottom: 1.2rem; border-radius: 4px; }
+    .important { color: #c1121f; font-weight: bold; }
+    a { color: #3d5a80; text-decoration: underline; }
+    .example { background: #e0e0e0; padding: 0.7rem; border-radius: 4px; margin-bottom: 1rem; }
+    .contact { margin-top: 2rem; font-size: 1.06rem; }
+    .token { color: #005f73; }
+  </style>
+</head>
+<body>
 
-<h1 id="user-manual-cv-engine">User Manual - CV Engine</h1>
-<p><strong>Overview</strong> The CV Engine allows users to format CVs into predefined templates by simply sending an email with the CV(s) as an attachment. The tool automatically processes the CV(s) and returns the formatted output.</p>
-<p><strong>How to Use the Tool</strong></p>
+<h1>CV Engine &mdash; User Manual</h1>
+<p>
+  <strong>CV Engine</strong> allows you to easily format, translate, and tailor CVs into your chosen template. Simply send an email with your CV(s) attached and let the engine do the rest!
+</p>
+
+<h2>How to Use</h2>
+
 <ol>
-<li><p><strong>Basic Usage</strong></p>
-<ul>
-<li>Send an email to <strong><a href="mailto:engine@saply.ai">engine@saply.ai</a></strong> with the CV(s) attached.</li>
-<li>If no specific instructions are provided, the CV will be formatted using the default template.</li>
-</ul>
+  <li>
+    <h3>Send Your CV(s)</h3>
+    <ul>
+      <li>Email your CV(s) as attachment(s) to <a href="mailto:engine@saply.ai">engine@saply.ai</a>.</li>
+      <li>If you don’t include a subject, the default template and original CV language are used.</li>
+    </ul>
+  </li>
+  <li>
+    <h3>Specify a Template <span class="important">(optional)</span></h3>
+    <ul>
+      <li>Add the template name (e.g., <code>bnp</code>) in the <strong>email subject</strong> to use a specific template.</li>
+      <li>Each attached CV will be formatted using this template.</li>
+    </ul>
+  </li>
+  <li>
+    <h3>Request Translation <span class="important">(optional)</span></h3>
+    <ul>
+      <li>Add <code>french</code>, <code>dutch</code>, <code>english</code>, or <code>german</code> in the <strong>email subject</strong> to receive the formatted CV in that language.</li>
+      <li>You can combine template and language: <code>bnp dutch</code></li>
+      <li>If no language is specified, the CV remains in the language of the original file.</li>
+    </ul>
+    <div class="note">
+      <strong>Note:</strong> Order does not matter in the subject (e.g., <code>dutch bnp</code> also works).
+    </div>
+  </li>
+  <li>
+  <h3>Batch Processing</h3>
+  <ul>
+    <li>
+      You can attach multiple CVs. <strong>All CVs will be processed with the <em>same</em> options specified in the email subject and body.</strong>
+      <br>
+      For example, if your subject is <code>bnp pimp french</code> and you paste a vacancy description in the email body, <strong>all attached CVs</strong> will:
+      <ul>
+        <li>Use the BNP template,</li>
+        <li>Be tailored ("pimped") to the same vacancy,</li>
+        <li>Be translated into French.</li>
+      </ul>
+    </li>
+  </ul>
 </li>
-<li><p><strong>Using Custom Templates</strong></p>
-<ul>
-<li>Specify the name of a desired template in the <strong>email subject</strong> to format the CV accordingly.</li>
-<li>If multiple CVs are attached, each will be formatted using the specified template.</li>
-</ul>
-</li>
-<li><p><strong>Multiple CV Processing</strong></p>
-<ul>
-<li>The tool supports batch processing. If multiple CVs are attached, each one will be formatted separately into the requested template.</li>
-</ul>
-</li>
-<li><p><strong>Including Vacancy Matching</strong></p>
-<ul>
-<li>If a <strong>vacancy description</strong> is included in the <strong>email body</strong> (not as an attachment), the tool will analyse the CV(s) and provide additional insights about their compatibility with the vacancy.</li>
-</ul>
-</li>
-<li><p><strong>CV Tailoring (Pimp Mode)</strong></p>
-<ul>
-<li>If <strong>&quot;pimp&quot;</strong> is added to the <strong>email subject</strong>, the CV will be tailored to the vacancy description provided in the email body.</li>
-<li>This includes rewriting the introduction and reordering the skills list to better match the vacancy.</li>
-</ul>
-</li>
+
+  <li>
+    <h3>Vacancy Matching <span class="important">(optional)</span></h3>
+    <ul>
+      <li>Paste a <strong>vacancy description</strong> into the <strong>email body</strong> (not as an attachment).</li>
+      <li>The engine will analyze and match the CV(s) to the vacancy, adding compatibility insights.</li>
+    </ul>
+  </li>
+  <li>
+    <h3>Tailor CV to Vacancy ("Pimp Mode") <span class="important">(optional)</span></h3>
+    <ul>
+      <li>Add <code>pimp</code> in the subject, attach a CV, and include the vacancy description in the email body.</li>
+      <li>The introduction and skills will be rewritten and reordered to fit the vacancy requirements.</li>
+    </ul>
+  </li>
 </ol>
-<p><strong>Token Consumption &amp; Processing Rules</strong></p>
+
+<h2>Token Usage & Processing Rules</h2>
 <ul>
-<li>A <strong>token</strong> is consumed for each successful CV output.</li>
-<li>If formatting fails and no result is produced, <strong>no token</strong> is deducted.</li>
+  <li>One <span class="token">token</span> is used for each successful CV output.</li>
+  <li><span class="important">No token</span> is used if processing fails and no result is produced.</li>
 </ul>
-<p><strong>Example Scenarios</strong></p>
-<ol>
-<li><strong>Format a CV using the default template</strong><ul>
-<li>Send an email with a CV attached and no subject.</li>
-</ul>
-</li>
-<li><strong>Format a CV using a specific template</strong><ul>
-<li>Send an email with &quot;bnp&quot; in the subject and a CV attached.</li>
-</ul>
-</li>
-<li><strong>Format multiple CVs with a specific template</strong><ul>
-<li>Send an email with &quot;bnp&quot; in the subject and multiple CVs attached.</li>
-</ul>
-</li>
-<li><strong>Match CV(s) with a vacancy description</strong><ul>
-<li>Send an email with a CV attached and a vacancy description in the email body.</li>
-</ul>
-</li>
-<li><strong>Tailor CV(s) to a vacancy</strong><ul>
-<li>Send an email with &quot;pimp&quot; in the subject, a CV attached, and a vacancy description in the email body.</li>
-</ul>
-</li>
-</ol>
-<p>For any issues, support or you forgot which templates you have access to, please contact <strong><a href="mailto:guillaume.lameyse@saply.ai">guillaume.lameyse@saply.ai</a></strong>.</p>
-<p>For urgent matters, please call: +32 496 07 11 65</p>
+
+<h2>Examples</h2>
+<div class="example">
+  <strong>Format a CV using the default template:</strong>
+  <ul>
+    <li>Send an email with a CV attached and <strong>no subject</strong>.</li>
+  </ul>
+</div>
+<div class="example">
+  <strong>Format a CV using a specific template:</strong>
+  <ul>
+    <li>Subject: <code>bnp</code><br>Attach CV(s).</li>
+  </ul>
+</div>
+<div class="example">
+  <strong>Format a CV in a specific language:</strong>
+  <ul>
+    <li>Subject: <code>dutch</code> (for Dutch output)</li>
+    <li>Or combine: <code>bnp german</code> (use template BNP and translate to German)</li>
+    <li>Attach CV(s).</li>
+  </ul>
+</div>
+<div class="example">
+  <strong>Batch process multiple CVs:</strong>
+  <ul>
+    <li>Subject: <code>bnp french</code></li>
+    <li>Attach several CVs.</li>
+  </ul>
+</div>
+<div class="example">
+  <strong>Match CV(s) to a vacancy description:</strong>
+  <ul>
+    <li>Attach CV(s), paste vacancy description in the email body.</li>
+  </ul>
+</div>
+<div class="example">
+  <strong>Tailor CV(s) to a vacancy:</strong>
+  <ul>
+    <li>Subject: <code>pimp</code> (or <code>pimp dutch</code>, etc.)</li>
+    <li>Attach CV(s), paste vacancy in the email body.</li>
+  </ul>
+</div>
+
+<div class="contact">
+  <p>
+    <strong>Need help or have questions?</strong><br>
+    Contact: <a href="mailto:guillaume.lameyse@saply.ai">guillaume.lameyse@saply.ai</a>
+  </p>
+  <p>
+    <strong>Urgent?</strong> Call: +32 496 07 11 65
+  </p>
+</div>
+
+</body>
+</html>
